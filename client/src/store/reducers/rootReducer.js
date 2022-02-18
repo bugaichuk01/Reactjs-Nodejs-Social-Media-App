@@ -1,7 +1,9 @@
 import {LOGIN_FAILURE, LOGIN_START, LOGIN_SUCCESS} from "../constants/actionTypes";
 
 const initialState = {
-    user: null,
+    user: localStorage.getItem('user.user')
+        ? JSON.parse(localStorage.getItem('user.user'))
+        : null,
     isFetching: false,
     error: false
 };

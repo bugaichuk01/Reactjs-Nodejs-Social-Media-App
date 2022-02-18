@@ -4,9 +4,11 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {format} from 'timeago.js';
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 export default function Post({post}) {
     const _path = process.env.REACT_APP_PUBLIC_FOLDER;
+    const {user:currentUser} = useSelector(state => state);
 
     const [like, setLike] = useState(post.likes.length);
     const [isLiked, setIsLiked] = useState(false);
@@ -18,12 +20,21 @@ export default function Post({post}) {
             setUser(response.data);
         }
         fetchUser();
-    }, [post.userId])
+    }, [post.userId]);
+    useEffect(() => {
+        setIsLiked(post.likes.includes(currentUser._id))
+    }, [currentUser._id, post.likes]);
 
     const likeHandler = () => {
+        try {
+            axios.put('api/posts/' + post._id + '/like', {userId: currentUser._id});
+        } catch (error) {
+
+        }
         setLike(isLiked ? like - 1 : like + 1);
         setIsLiked(!isLiked);
     }
+
 
     return (
         <div className="post">
@@ -33,7 +44,11 @@ export default function Post({post}) {
                         <Link to={`${user.username}`}>
                             <img
                                 className="post__profile-img"
-                                src={user.profilePicture || _path + 'person/defaultAvatar.png'}
+                                src={
+                                    user.profilePicture
+                                        ? _path + user.profilePicture
+                                        : _path + 'person/defaultAvatar.png'
+                                }
                                 alt=""
                             />
                         </Link>
@@ -52,8 +67,8 @@ export default function Post({post}) {
                 </div>
                 <div className="post__bottom">
                     <div className="post__bottom-left">
-                        <img className="like__icon" src="assets/like.png" onClick={likeHandler} alt=""/>
-                        <img className="like__icon" src="assets/heart.png" onClick={likeHandler} alt=""/>
+                        <img className="like__icon" src={_path + 'like.png'} onClick={likeHandler} alt=""/>
+                        <img className="like__icon" src={_path + 'heart.png'} onClick={likeHandler} alt=""/>
                         <span className="like__icon-counter">{like} people like it</span>
                     </div>
                     <div className="post__bottom-right">

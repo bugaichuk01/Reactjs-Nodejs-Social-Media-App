@@ -1,26 +1,71 @@
 import "./Share.css";
 import {PermMedia, Label, Room, EmojiEmotions} from "@material-ui/icons"
+import {useSelector} from "react-redux";
+import {useRef, useState} from "react";
+import axios from "axios";
 
 export default function Share() {
     const _path = process.env.REACT_APP_PUBLIC_FOLDER;
+    const {user} = useSelector(state => state);
+
+    const desc = useRef();
+    const [file, setFile] = useState(null);
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const newPost = {
+            userId: user._id,
+            desc: desc.current.value,
+        };
+        if (file) {
+            const data = new FormData();
+            const fileName = Date.now() + file.name;
+            data.append("name", fileName);
+            data.append("file", file);
+            newPost.img = fileName;
+            console.log(newPost);
+            try {
+                await axios.post("api/upload", data);
+            } catch (err) {
+            }
+        }
+        try {
+            await axios.post("api/posts", newPost);
+            window.location.reload();
+        } catch (err) {
+        }
+    };
 
     return (
         <div className="share">
             <div className="share__wrapper">
                 <div className="share__top">
-                    <img className="share__profile-img" src={_path + 'person/1.jpeg'} alt=""/>
+                    <img className="share__profile-img"
+                         src={
+                             user.profilePicture
+                                 ? _path + user.profilePicture
+                                 : _path + 'person/defaultAvatar.png'}
+                         alt=""/>
                     <input
-                        placeholder="What's in your mind Safak?"
+                        placeholder={"What's in your mind " + user.username + "?"}
                         className="share__input"
+                        ref={desc}
                     />
                 </div>
                 <hr className="share__hr"/>
-                <div className="share__bottom">
+                <form className="share__bottom" onSubmit={handleSubmit}>
                     <div className="share__options">
-                        <div className="share__option">
+                        <label htmlFor='file' className="share__option">
                             <PermMedia htmlColor="tomato" className="share__icon"/>
                             <span className="share__option-text">Photo or Video</span>
-                        </div>
+                            <input
+                                style={{display: 'none'}}
+                                type="file"
+                                id='file'
+                                accept='.png,.jpeg,.jpg'
+                                onChange={(event) => setFile(event.target.files[0])}
+                            />
+                        </label>
                         <div className="share__option">
                             <Label htmlColor="blue" className="share__icon"/>
                             <span className="share__option-text">Tag</span>
@@ -34,8 +79,8 @@ export default function Share() {
                             <span className="share__option-text">Feelings</span>
                         </div>
                     </div>
-                    <button className="share__button">Share</button>
-                </div>
+                    <button type='submit' className="share__button">Share</button>
+                </form>
             </div>
         </div>
     );

@@ -1,5 +1,5 @@
 import "./Login.css";
-import {useRef} from "react";
+import {useEffect, useRef} from "react";
 import {loginCall} from "../../apiCalls";
 import {useDispatch, useSelector} from "react-redux";
 import {CircularProgress} from "@material-ui/core";

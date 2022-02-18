@@ -9,10 +9,15 @@ import {
     Navigate
 } from "react-router-dom";
 import {useSelector} from "react-redux";
+import {useEffect} from "react";
 
 const App = () => {
 
     const {user} = useSelector(state => state);
+
+    useEffect(() => {
+        localStorage.setItem('user.user', JSON.stringify(user));
+    }, [user]);
 
     return (
         <Router>

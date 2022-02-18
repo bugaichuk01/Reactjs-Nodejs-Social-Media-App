@@ -30,12 +30,12 @@ const Profile = () => {
                         <div className="profile__cover">
                             <img
                                 className="profile__cover-img"
-                                src={user.coverPicture || _path + 'person/defaultCover.png'}
+                                src={user.coverPicture ? _path + user.coverPicture : _path + 'person/defaultCover.png'}
                                 alt=""
                             />
                             <img
                                 className="profile__user-img"
-                                src={user.profilePicture || _path + 'person/defaultAvatar.png'}
+                                src={user.profilePicture ? _path + user.profilePicture : _path + 'person/defaultAvatar.png'}
                                 alt=""
                             />
                         </div>

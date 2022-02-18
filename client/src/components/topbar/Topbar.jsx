@@ -6,7 +6,6 @@ import {useSelector} from "react-redux";
 const Topbar = () => {
     const _path = process.env.REACT_APP_PUBLIC_FOLDER
     const user = useSelector(state => state);
-    console.log(user)
 
     return (
         <div className="topbar__container">

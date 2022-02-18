@@ -3,19 +3,21 @@ import Share from "../share/Share";
 import "./Feed.css";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {useSelector} from "react-redux";
 
 const Feed = ({username}) => {
     const [posts, setPosts] = useState([]);
+    const {user} = useSelector(state => state);
 
     useEffect(() => {
         const fetchPosts = async () => {
             const response = username
             ? await axios.get('api/posts/profile/' + username)
-            : await axios.get('api/posts/timeline/620e1ccc77c3b939d4a338f9');
-            setPosts(response.data);
+            : await axios.get('api/posts/timeline/' + user._id);
+            setPosts(response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
         }
         fetchPosts();
-    }, [username])
+    }, [username, user._id])
 
     return (
         <div className="feed">
