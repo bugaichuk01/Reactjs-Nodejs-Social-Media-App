@@ -1,7 +1,7 @@
 .topbar__container {
   height: 50px;
   width: 100%;
-  background-color: #1877f2;
+  background-color: #06141d;
   display: flex;
   align-items: center;
   position: sticky;
@@ -28,11 +28,12 @@
 .topbar__search {
   width: 100%;
   height: 30px;
-  background-color: white;
-  border-radius: 30px;
+  background-color: #28343e;
+  border-radius: 5px;
   display: flex;
   align-items: center;
 }
+
 
 .topbar__search-icon {
   font-size: 20px !important;
@@ -42,6 +43,11 @@
 .topbar__search-input {
   border: none;
   width: 70%;
+  background-color: #28343e;
+}
+
+.topbar__search-input::placeholder {
+  color: #fff;
 }
 
 .topbar__search-input:focus {

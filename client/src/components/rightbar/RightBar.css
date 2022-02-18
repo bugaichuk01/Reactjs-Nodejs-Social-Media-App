@@ -1,83 +1,116 @@
+.right-bar__container {
+    background-color: #06141d;
+}
+
 .right-bar {
-  flex: 3.5;
+    flex: 3.5;
 }
 
 .rightbar__wrapper {
-  padding: 20px 20px 0 0;
+    background-color: #1b2730;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 19px;
+    margin-right: 25px;
 }
 
 .birthday__container {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .birthday__img {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
 }
 
 .birthday__text {
-  font-weight: 300;
-  font-size: 15px;
+    font-weight: 300;
+    font-size: 15px;
 }
 
 .rightbar__ad {
-  width: 100%;
-  border-radius: 10px;
-  margin: 30px 0;
+    width: 100%;
+    border-radius: 10px;
+    margin: 30px 0;
 }
 
-.rightbar__title{
+.rightbar__title {
+    color: #fff;
     margin-bottom: 20px;
 }
 
 .rightbar__friend-list {
-  padding: 0;
-  margin: 0;
-  list-style: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
-.rightbar__title{
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 10px;
+.rightbar__title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
 }
 
-.rightbar__info{
-  margin-bottom: 30px;
+.rightbar__info {
+    margin-bottom: 30px;
 }
 
-.rightbar__info-item{
-  margin-bottom: 10px;
+.rightbar__info-item {
+    margin-bottom: 10px;
 }
 
-.rightbar__info-key{
-  font-weight: 500;
-  margin-right: 15px;
-  color: #555;
+.rightbar__info-key {
+    font-weight: 500;
+    margin-right: 15px;
+    color: #5b6875;
 }
 
-.rightbar__info-value{
-  font-weight: 300;
+.rightbar__info-value {
+    font-weight: 500;
+    color: #ffffff;
 }
 
-.rightbar__followings{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.rightbar__followings {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 345px;
+
 }
 
-.rightbar__following{
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-  cursor: pointer;
+.rightbar__following {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    cursor: pointer;
+    color: #fff;
 }
 
-.rightbar__following-img{
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 5px;
+.rightbar__following-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.rightbar__following-name {
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.rightbar__button-follow {
+    border: none;
+    padding: 6px;
+    width: 90px;
+    height: 35px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    border-radius: 10px;
+    background-color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    color: #000;
 }

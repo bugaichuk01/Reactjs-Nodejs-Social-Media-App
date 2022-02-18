@@ -1,5 +1,5 @@
 import "./Share.css";
-import {PermMedia, Label, Room, EmojiEmotions} from "@material-ui/icons"
+import {Label, Room, EmojiEmotions, InsertPhoto} from "@material-ui/icons"
 import {useSelector} from "react-redux";
 import {useRef, useState} from "react";
 import axios from "axios";
@@ -52,12 +52,11 @@ export default function Share() {
                         ref={desc}
                     />
                 </div>
-                <hr className="share__hr"/>
                 <form className="share__bottom" onSubmit={handleSubmit}>
                     <div className="share__options">
                         <label htmlFor='file' className="share__option">
-                            <PermMedia htmlColor="tomato" className="share__icon"/>
-                            <span className="share__option-text">Photo or Video</span>
+                            <InsertPhoto htmlColor="#20da97" className="share__icon"/>
+                            <span className="share__option-text">Photo/Video</span>
                             <input
                                 style={{display: 'none'}}
                                 type="file"
@@ -67,15 +66,15 @@ export default function Share() {
                             />
                         </label>
                         <div className="share__option">
-                            <Label htmlColor="blue" className="share__icon"/>
+                            <Label htmlColor="#3d7cd1" className="share__icon"/>
                             <span className="share__option-text">Tag</span>
                         </div>
                         <div className="share__option">
-                            <Room htmlColor="green" className="share__icon"/>
+                            <Room htmlColor="#ff6b6b" className="share__icon"/>
                             <span className="share__option-text">Location</span>
                         </div>
                         <div className="share__option">
-                            <EmojiEmotions htmlColor="goldenrod" className="share__icon"/>
+                            <EmojiEmotions htmlColor="#f5bc51" className="share__icon"/>
                             <span className="share__option-text">Feelings</span>
                         </div>
                     </div>

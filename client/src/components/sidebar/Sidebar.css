@@ -1,7 +1,7 @@
 .sidebar {
+  background-color: #06141d;
   flex: 3;
   height: calc(100vh - 50px);
-  overflow-y: scroll;
   position: sticky;
   top: 50px;
 }
@@ -32,20 +32,12 @@
   margin-bottom: 20px;
 }
 
+.sidebar__list-item-text {
+  color: #fff;
+}
+
 .sidebar__icon {
   margin-right: 15px;
-}
-
-.sidebar__button {
-  width: 150px;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  font-weight: 500;
-}
-
-.sidebar__hr {
-  margin: 20px 0;
 }
 
 .sidebar__friend-list {

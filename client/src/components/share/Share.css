@@ -1,76 +1,85 @@
 .share {
-  width: 100%;
-  height: 170px;
-  border-radius: 10px;
-  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
-  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    background-color: #1b2730;
+    margin-bottom: 30px;
 }
 
 .share__wrapper {
-  padding: 10px;
+    padding: 10px;
 }
 
 .share__top {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .share__profile-img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 10px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.share__input::placeholder{
+    font-size: 12px;
+    font-weight: 400;
+    color: #fff;
+    padding-left: 10px;
 }
 
 .share__input {
-  border: none;
-  width: 80%;
+    background-color: #28343e;
+    border: none;
+    border-radius: 5px ;
+    width: 100%;
+    height: 30px;
 }
 
 .share__input:focus {
-  outline: none;
-}
-
-.share__hr {
-  margin: 20px;
+    outline: none;
 }
 
 .share__bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.share__options{
     display: flex;
-    margin-left: 20px;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.share__option{
+.share__options {
+    display: flex;
+    margin-left: 45px;
+}
+
+.share__option {
+
     display: flex;
     align-items: center;
     margin-right: 15px;
     cursor: pointer;
 }
 
-.share__icon{
+.share__option-text {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.share__icon {
     font-size: 18px;
     margin-right: 3px;
 }
 
-.share__option-text{
-    font-size: 14px;
-    font-weight: 500;
-}
 
-.share__button{
+.share__button {
     border: none;
-    padding: 7px;
-    border-radius: 5px;
-    background-color: green;
-    font-weight: 500;
-    margin-right: 20px;
+    padding: 6px;
+    width: 65px;
+    border-radius: 10px;
+    background-color: #fff;
+    font-weight: 600;
     cursor: pointer;
-    color: white;
+    color: #000;
 }

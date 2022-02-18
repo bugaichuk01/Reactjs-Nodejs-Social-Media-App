@@ -1,5 +1,6 @@
 .profile{
     display: flex;
+    background-color: #06141d;
 }
 
 .profile__right{
@@ -27,7 +28,6 @@
     right: 0;
     margin: auto;
     top: 150px;
-    border: 3px solid white;
 }
 
 .profile__info{
@@ -38,6 +38,7 @@
 }
 
 .profile__info-name{
+    color: #fff;
     font-size: 24px;
 }
 

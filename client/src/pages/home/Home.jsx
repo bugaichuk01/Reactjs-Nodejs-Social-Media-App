@@ -4,14 +4,14 @@ import Feed from "../../components/feed/Feed";
 import RightBar from "../../components/rightbar/RightBar";
 import "./Home.css"
 
-const Home = () => {
+const Home = ({user}) => {
     return (
         <>
             <Topbar />
             <div className="home__container">
                 <Sidebar />
                 <Feed/>
-                <RightBar/>
+                <RightBar user={user}/>
             </div>
         </>
     );
