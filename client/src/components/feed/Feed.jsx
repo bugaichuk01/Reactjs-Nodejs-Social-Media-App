@@ -17,12 +17,13 @@ const Feed = ({username}) => {
             setPosts(response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
         }
         fetchPosts();
-    }, [username, user._id])
+    }, [username, user._id, posts])
 
 
     return (
         <div className="feed">
             <div className="feed__wrapper">
+                <Share />
                 {username === user.username && <Share/>}
                 {posts && (
                     posts.map((post) => (

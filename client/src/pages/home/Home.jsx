@@ -9,7 +9,7 @@ const Home = ({user}) => {
         <>
             <Topbar />
             <div className="home__container">
-                <Sidebar />
+                <Sidebar user={user} />
                 <Feed/>
                 <RightBar user={user}/>
             </div>

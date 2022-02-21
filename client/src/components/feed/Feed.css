@@ -1,8 +1,9 @@
 .feed{
-    flex:5.5
+    background-color: #06141d;
+    flex: 1.2
 }
 
 .feed__wrapper{
-    padding: 20px 20px 20px 20px;
-    background-color: #06141d;
+    padding-top: 20px;
+    padding-right: 35px;
 }

@@ -6,10 +6,12 @@ import RightBar from "../../components/rightbar/RightBar";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 const Profile = () => {
     const _path = process.env.REACT_APP_PUBLIC_FOLDER;
     const [user, setUser] = useState({});
+    const {user: currentUser} = useSelector(state => state);
     const params = useParams().username;
 
     useEffect(() => {
@@ -24,7 +26,7 @@ const Profile = () => {
         <>
             <Topbar/>
             <div className="profile">
-                <Sidebar/>
+                <Sidebar user={currentUser}/>
                 <div className="profile__right">
                     <div className="profile__right-top">
                         <div className="profile__cover">

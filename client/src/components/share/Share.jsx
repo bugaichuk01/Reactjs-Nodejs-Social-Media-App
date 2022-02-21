@@ -1,8 +1,9 @@
-import "./Share.css";
 import {Label, Room, EmojiEmotions, InsertPhoto} from "@material-ui/icons"
 import {useSelector} from "react-redux";
 import {useRef, useState} from "react";
 import axios from "axios";
+import styles from "./Share.module.css";
+
 
 export default function Share() {
     const _path = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -37,10 +38,10 @@ export default function Share() {
     };
 
     return (
-        <div className="share">
-            <div className="share__wrapper">
-                <div className="share__top">
-                    <img className="share__profile-img"
+        <div className={styles.share}>
+            <div className={styles.share__wrapper}>
+                <div className={styles.share__top}>
+                    <img className={styles.share__avatar}
                          src={
                              user.profilePicture
                                  ? _path + user.profilePicture
@@ -48,15 +49,15 @@ export default function Share() {
                          alt=""/>
                     <input
                         placeholder={"What's in your mind " + user.username + "?"}
-                        className="share__input"
+                        className={styles.share__input}
                         ref={desc}
                     />
                 </div>
-                <form className="share__bottom" onSubmit={handleSubmit}>
-                    <div className="share__options">
-                        <label htmlFor='file' className="share__option">
-                            <InsertPhoto htmlColor="#20da97" className="share__icon"/>
-                            <span className="share__option-text">Photo/Video</span>
+                <form onSubmit={handleSubmit}>
+                    <div className={styles.share__options}>
+                        <label htmlFor='file' className={styles.share__option}>
+                            <InsertPhoto htmlColor="#20da97" className={styles.share__icon}/>
+                            <span className={styles.share__option_text}>Photo/Video</span>
                             <input
                                 style={{display: 'none'}}
                                 type="file"
@@ -65,20 +66,20 @@ export default function Share() {
                                 onChange={(event) => setFile(event.target.files[0])}
                             />
                         </label>
-                        <div className="share__option">
-                            <Label htmlColor="#3d7cd1" className="share__icon"/>
-                            <span className="share__option-text">Tag</span>
+                        <div className={styles.share__option}>
+                            <Label className={styles.share__icon}/>
+                            <span className={styles.share__option_text}>Tag</span>
                         </div>
-                        <div className="share__option">
-                            <Room htmlColor="#ff6b6b" className="share__icon"/>
-                            <span className="share__option-text">Location</span>
+                        <div className={styles.share__option}>
+                            <Room className={styles.share__icon}/>
+                            <span className={styles.share__option_text}>Location</span>
                         </div>
-                        <div className="share__option">
-                            <EmojiEmotions htmlColor="#f5bc51" className="share__icon"/>
-                            <span className="share__option-text">Feelings</span>
+                        <div className={styles.share__option}>
+                            <EmojiEmotions className={styles.share__icon}/>
+                            <span className={styles.share__option_text}>Feelings</span>
                         </div>
+                        <button type='submit' className={styles.share__button}>Share</button>
                     </div>
-                    <button type='submit' className="share__button">Share</button>
                 </form>
             </div>
         </div>

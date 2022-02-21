@@ -1,5 +1,6 @@
 .right-bar__container {
     background-color: #06141d;
+    flex: 0.8;
 }
 
 .right-bar {
@@ -103,12 +104,11 @@
 
 .rightbar__button-follow {
     border: none;
-    padding: 6px;
     width: 90px;
     height: 35px;
     margin-bottom: 15px;
     margin-top: 5px;
-    border-radius: 10px;
+    border-radius: 20px;
     background-color: #fff;
     font-weight: 600;
     cursor: pointer;

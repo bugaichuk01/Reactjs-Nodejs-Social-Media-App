@@ -1,55 +1,66 @@
-import "./Topbar.css";
-import {Search, Person, Chat, Notifications} from "@material-ui/icons";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {useSelector} from "react-redux";
+import {Search, Twitter, HomeRounded} from "@material-ui/icons";
+import style from "./Topbar.module.css";
+import cn from "classnames";
 
 const Topbar = () => {
     const _path = process.env.REACT_APP_PUBLIC_FOLDER
     const {user} = useSelector(state => state);
+    const location = useLocation();
+
 
     return (
-        <div className="topbar__container">
-            <div className="topbar__left">
-                <Link to="/" style={{textDecoration: "none"}}>
-                    <span className="topbar__logo">Social App</span>
+        <header className={style.header}>
+            <div className={style.header__left}>
+                <Link to="/">
+                    <Twitter className={style.logo}/>
                 </Link>
-            </div>
-            <div className="topbar__center">
-                <div className="topbar__search">
-                    <Search htmlColor={'#fff'} className="topbar__search-icon"/>
+                <div className={style.search}>
+                    <Search className={style.search__icon}/>
                     <input
-                        placeholder="Search for friend, post or video"
-                        className="topbar__search-input"
+                        placeholder="Explore..."
+                        className={style.input}
                     />
                 </div>
             </div>
-            <div className="topbar__right">
-                <div className="topbar__links">
-                    <span className="topbar__link">Homepage</span>
-                    <span className="topbar__link">Timeline</span>
-                </div>
-                <div className="topbar__icons">
-                    <div className="topbar__icon-item">
-                        <Person/>
-                    </div>
-                    <div className="topbar__icon-item">
-                        <Chat/>
-                    </div>
-                    <div className="topbar__icon-item">
-                        <Notifications/>
-                    </div>
-                </div>
-                <Link to={`/${user.username}`}>
-                    <img
-                        src={user.profilePicture
-                            ? _path + user.profilePicture
-                            : _path + 'person/defaultAvatar.png'}
-                        alt=""
-                        className="topbar__img"
-                    />
+            <div className={style.header__right}>
+                <Link
+                    to='/'
+                    className={
+                        location.pathname === '/'
+                            ? cn(style.link, style.header__link, style.link__active)
+                            : cn(style.link, style.header__link, style.link__disabled)}>
+                    <HomeRounded className={
+                        location.pathname === '/'
+                            ? cn(style.link__icon, style.link__icon_active)
+                            : cn(style.link__icon, style.link__icon_disabled)
+                    }  />
+                    <span
+                        className={
+                            location.pathname === '/'
+                                ? cn(style.link__text, style.link__text_active)
+                                : cn(style.link__text, style.link__text_disabled)
+                        }>
+                        Home
+                    </span>
                 </Link>
+                <div className={style.header__profile}>
+                    <Link to={`/${user.username}`} className={style.link}>
+                        <img
+                            src={
+                                user.profilePicture
+                                    ? _path + user.profilePicture
+                                    : _path + 'person/defaultAvatar.png'
+                            }
+                            alt={user.username}
+                            className={style.header__avatar}
+                        />
+                        <span className={style.header__username}>{user.username}</span>
+                    </Link>
+                </div>
             </div>
-        </div>
+        </header>
     );
 }
 
