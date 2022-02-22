@@ -8,10 +8,12 @@ router.post('/register', async (request, response) => {
         // generate hashed password
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(request.body.password, salt);
+        const sluggedUsername = '@' + request.body.username.toLowerCase().split(' ').join('');
 
         // create new user
         const newUser = new User({
             username: request.body.username,
+            slug: sluggedUsername,
             email: request.body.email,
             password: hashedPassword,
         })

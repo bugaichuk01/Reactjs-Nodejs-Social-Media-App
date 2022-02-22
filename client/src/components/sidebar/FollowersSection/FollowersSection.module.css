@@ -1,0 +1,27 @@
+.sidebar__followers {
+    background-color: #1b2730;
+    border-radius: 15px;
+    margin-top: 15px;
+    padding: 10px 10px 10px 20px;
+}
+
+.sidebar__text {
+    font-weight: 600;
+    color: #fff;
+}
+.sidebar__friend_list {
+    margin-top: 15px;
+}
+ul {
+    margin-block-start: 0;
+    padding-inline-start: 0;
+}
+
+.sidebar__link {
+    color: #1da1f2;
+    font-weight: 600;
+    font-size: 14px;
+    padding-top: 20px;
+    cursor: pointer;
+    padding-bottom: 20px;
+}

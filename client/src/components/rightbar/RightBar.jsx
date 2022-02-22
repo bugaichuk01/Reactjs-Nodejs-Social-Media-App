@@ -1,35 +1,21 @@
 import "./RightBar.css";
-import {useEffect, useState} from "react";
-import axios from "axios";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 import Follow from "../follow/Follow";
+import {useGetRequest} from "../../useApi";
 
 export default function RightBar({user}) {
     const _path = process.env.REACT_APP_PUBLIC_FOLDER;
     const {user: currentUser} = useSelector(state => state);
-    const [friends, setFriends] = useState([]);
 
-
-    useEffect(() => {
-        const getFriends = async () => {
-            try {
-                const friendList = await axios.get(`api/users/friends/${user._id}`);
-                setFriends(friendList.data);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-        getFriends();
-    }, [user]);
-
+    const friends = useGetRequest(`api/users/friends/${user._id}`, user);
 
     return (
         <div className='right-bar__container'>
             <div className="right-bar">
                 <div className="rightbar__wrapper">
                     {user.username !== currentUser.username && (
-                        <Follow user={user} />
+                        <Follow user={user}/>
                     )}
                     <h4 className="rightbar__title">User information</h4>
                     <div className="rightbar__info">

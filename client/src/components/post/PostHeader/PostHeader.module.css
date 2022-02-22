@@ -1,0 +1,41 @@
+
+.post__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post__header_author {
+    display: flex;
+    align-items: center;
+}
+
+.post__header_options {
+    color: #5b6875;
+}
+
+.post__avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.post__info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.post__username {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.post__date {
+    margin-top: 5px;
+    color: #5b6875;
+    font-weight: 600;
+    font-size: 12px;
+}

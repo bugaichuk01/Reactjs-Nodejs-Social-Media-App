@@ -23,6 +23,10 @@ const UserSchema = new mongoose.Schema({
             type: String,
             default: ''
         },
+        slug: {
+            type: String,
+            unique: true
+        },
         coverPicture: {
             type: String,
             default: ''

@@ -1,6 +1,8 @@
 .right-bar__container {
-    background-color: #06141d;
-    flex: 0.8;
+    flex: 0.3;
+    height: calc(100vh - 50px);
+    position: sticky;
+    top: 50px;
 }
 
 .right-bar {
@@ -12,7 +14,6 @@
     border-radius: 10px;
     padding: 10px;
     margin-top: 19px;
-    margin-right: 25px;
 }
 
 .birthday__container {
@@ -77,8 +78,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 345px;
-
 }
 
 .rightbar__following {

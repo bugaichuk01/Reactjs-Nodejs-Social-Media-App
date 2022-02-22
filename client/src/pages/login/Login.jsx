@@ -1,5 +1,5 @@
 import "./Login.css";
-import {useEffect, useRef} from "react";
+import {useRef} from "react";
 import {loginCall} from "../../apiCalls";
 import {useDispatch, useSelector} from "react-redux";
 import {CircularProgress} from "@material-ui/core";
@@ -44,7 +44,7 @@ const Login = () => {
                         </button>
                         <span className="login__forgot">Forgot Password?</span>
                         <button disabled={user.isFetching} className="login__register-button">
-                            {user.isFetching ? <CircularProgress size='25px' color='white' /> : 'Not registered yet?'}
+                            {user.isFetching ? <CircularProgress size='25px' color='white' /> : 'zNot registered yet?'}
                         </button>
                     </form>
                 </div>

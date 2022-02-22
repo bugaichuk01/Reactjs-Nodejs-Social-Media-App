@@ -1,0 +1,16 @@
+.profile{
+    display: flex;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.profile__right{
+    flex: 9;
+}
+
+.profile__info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

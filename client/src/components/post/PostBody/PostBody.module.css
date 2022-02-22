@@ -1,0 +1,83 @@
+
+.post__container {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-size: 15px;
+    line-height: 19px;
+    margin-bottom: 10px;
+    margin-left: 70px;
+    margin-right: 40px;
+}
+
+.post__body {
+    margin-top: 10px;
+}
+
+.post__body_full {
+    color: #1d90d7;
+    font-weight: 600;
+    font-size: 12px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.full__active {
+    display: none;
+}
+
+.full__disabled {
+    display: block
+}
+
+.post__likes {
+    color: #5b6875;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.post__img {
+    margin-top: 15px;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.heart__icon {
+    background-color: #f2506d;
+}
+
+.retweet__icon {
+    background-color: #23ca97;
+}
+
+.share__icon {
+    background-color: #4b93ff;
+}
+
+.icon {
+    margin-right: 5px;
+    border-radius: 50%;
+    font-size: 23px !important;
+    padding: 4px;
+}
+
+.post__under {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post__comments_text {
+    color: #5b6875;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+}

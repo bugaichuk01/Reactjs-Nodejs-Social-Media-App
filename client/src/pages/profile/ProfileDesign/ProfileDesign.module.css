@@ -1,0 +1,28 @@
+.profile__cover{
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    width: 80%;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 60px;
+}
+
+
+.profile__cover_img{
+    width: 100%;
+    max-height: 300px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.profile__user_img{
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    margin: 0 auto;
+    top: 270px;
+}

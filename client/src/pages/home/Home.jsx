@@ -1,16 +1,16 @@
-import Topbar from "../../components/topbar/Topbar";
+import Header from "../../components/Header/Header";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Feed from "../../components/feed/Feed";
 import RightBar from "../../components/rightbar/RightBar";
-import "./Home.css"
+import styles from "./Home.module.css"
 
 const Home = ({user}) => {
     return (
         <>
-            <Topbar />
-            <div className="home__container">
-                <Sidebar user={user} />
-                <Feed/>
+            <Header />
+            <div className={styles.home__container}>
+                <Sidebar/>
+                <Feed />
                 <RightBar user={user}/>
             </div>
         </>

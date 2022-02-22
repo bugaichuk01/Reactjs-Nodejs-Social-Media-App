@@ -1,0 +1,50 @@
+.post__actions {
+    margin-left: 70px;
+    display: flex;
+    color: #fff;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.button__active {
+    background-color: #fff;
+}
+
+.button__disabled {
+    background-color: #28343e;
+}
+
+.post__action_last {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1b2730;
+    border: 2px solid #5b6875;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.action__icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.like__active {
+    color: #1da1f2;
+}
+
+.like__disabled {
+    color: #fff;
+}
+
+.text__active {
+    color: #06141d;
+}
+
+.text__disabled {
+    color: #fff;
+}
+

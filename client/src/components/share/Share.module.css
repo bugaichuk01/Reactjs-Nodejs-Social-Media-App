@@ -6,14 +6,9 @@
 }
 
 .share__wrapper {
+    margin-top: 10px;
     padding: 10px;
-}
-
-.share__top {
-    padding-top: 10px;
     display: flex;
-    align-items: center;
-    margin-bottom: 10px;
 }
 
 .share__avatar {
@@ -26,14 +21,12 @@
 }
 
 .share__input {
-    margin-left: 15px;
-    margin-right: 10px;
     height: 45px;
     border-radius: 12px;
     display: flex;
     align-items: center;
     border: none;
-    width: 90%;
+    width: 98%;
     background-color: #28343e;
     color: #81909e;
     font-weight: 500;
@@ -57,10 +50,10 @@
 }
 
 .share__options {
+    margin-top: 15px;
     padding-top: 5px;
     padding-bottom: 5px;
     display: flex;
-    margin-left: 80px;
 }
 
 .share__option {
@@ -94,4 +87,25 @@
     font-weight: 600;
     cursor: pointer;
     color: #fff;
+    margin: 2px 10px 2px 2px;;
+}
+
+.share__img_container{
+    padding: 0 20px 10px 20px;
+    position: relative;
+}
+
+.share__img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.share__cancel{
+    color: #1da1f2;
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    cursor: pointer;
+    opacity: 0.7;
 }

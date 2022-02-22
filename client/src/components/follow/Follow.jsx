@@ -8,12 +8,11 @@ function Follow({user}) {
 
     const dispatch = useDispatch();
     const [followed, setFollowed] = useState(false);
-
     const {user: currentUser} = useSelector(state => state);
 
     useEffect(() => {
         setFollowed(currentUser.followings.includes(user?._id))
-    }, [user]);
+    }, [user, currentUser.followings]);
 
     const handleClick = async () => {
         try {

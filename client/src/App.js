@@ -13,19 +13,19 @@ import {useEffect} from "react";
 
 const App = () => {
 
-    const {user} = useSelector(state => state);
+    const {user: currentUser} = useSelector(state => state);
 
     useEffect(() => {
-        localStorage.setItem('user.user', JSON.stringify(user));
-    }, [user]);
+        localStorage.setItem('user.user', JSON.stringify(currentUser));
+    }, [currentUser]);
 
     return (
         <Router>
             <Routes>
-                <Route exact path="/" element={user ? <Home user={user}/> : <Login/>}/>
-                <Route path="/login" element={user ? <Navigate replace to='/'/> : <Login/>}/>
-                <Route path="/register" element={user ? <Navigate replace to='/'/> : <Register/>}/>
-                <Route path="/:username" element={<Profile/>}/>
+                <Route exact path="/" element={currentUser ? <Home user={currentUser}/> : <Login/>}/>
+                <Route path="/login" element={currentUser ? <Navigate replace to='/'/> : <Login/>}/>
+                <Route path="/register" element={currentUser ? <Navigate replace to='/'/> : <Register/>}/>
+                <Route path="/:username" element={currentUser ? <Profile/> : <Login/>}/>
             </Routes>
         </Router>
     );
