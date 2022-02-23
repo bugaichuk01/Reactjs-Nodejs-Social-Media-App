@@ -2,7 +2,7 @@ import "./Login.css";
 import {useRef} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {CircularProgress} from "@material-ui/core";
-import API from "../../API";
+import API from "../../utils/API";
 
 const Login = () => {
     const user = useSelector(state => state);

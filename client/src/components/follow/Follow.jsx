@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import './Follow.css';
-import API from '../../API'
+import API from '../../utils/API'
 
 function Follow({user}) {
 

@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 import Post from "../post/Post";
 import Share from "../Share/Share";
 import style from "./Feed.module.css";
-import API from "../../API";
+import API from "../../utils/API";
 
 const Feed = ({username}) => {
     const [posts, setPosts] = useState([]);

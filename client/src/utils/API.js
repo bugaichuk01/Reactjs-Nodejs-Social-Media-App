@@ -1,5 +1,5 @@
 import axios from "axios";
-import {loginFailure, loginStart, loginSuccess, follow, unfollow} from "./store/actions";
+import {loginFailure, loginStart, loginSuccess, follow, unfollow} from "../store/actions";
 
 export default {
     //auth
@@ -15,6 +15,7 @@ export default {
 
     //users
     getUser: async (userData) => await axios.get(`api/users?username=${userData}`),
+    getUserById: async (userData) => await axios.get(`api/users?userId=${userData}`),
     getFollowings: async (userData) => await axios.get(`api/users/followings/${userData}`),
     getFollowers: async (userData) => await axios.get(`api/users/followers/${userData}`),
 

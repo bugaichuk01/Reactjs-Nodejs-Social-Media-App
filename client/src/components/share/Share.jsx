@@ -3,7 +3,7 @@ import {useEffect, useRef, useState} from "react";
 import {useSelector} from "react-redux";
 import axios from "axios";
 import {Label, Room, EmojiEmotions, InsertPhoto, Cancel} from "@material-ui/icons"
-import API from "../../API";
+import API from "../../utils/API";
 import ShareLoader from "../../loaders/ShareLoader";
 import styles from "./Share.module.css";
 

@@ -3,7 +3,7 @@ import style from './FollowersSection.module.css';
 import CloseFriend from "../../closeFriend/CloseFriend";
 import {useSelector} from "react-redux";
 import FollowersLoader from "../../../loaders/FollowersLoader";
-import API from "../../../API";
+import API from "../../../utils/API";
 
 function FollowersSection() {
     const [followers, setFollowers] = useState([]);

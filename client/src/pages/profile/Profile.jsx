@@ -7,7 +7,7 @@ import RightBar from "../../components/rightbar/RightBar";
 import {useParams} from "react-router-dom";
 import ProfileDesign from "./ProfileDesign/ProfileDesign";
 import {useEffect, useState} from "react";
-import API from "../../API";
+import API from "../../utils/API";
 
 const Profile = () => {
     const [user, setUser] = useState({});

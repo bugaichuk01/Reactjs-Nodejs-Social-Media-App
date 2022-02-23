@@ -4,7 +4,7 @@ import {Search, Twitter, HomeRounded} from "@material-ui/icons";
 import style from "./Header.module.css";
 import cn from "classnames";
 import {useEffect, useState} from "react";
-import API from "../../API";
+import API from "../../utils/API";
 
 const Header = () => {
     const location = useLocation();

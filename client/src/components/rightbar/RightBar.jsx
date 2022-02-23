@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import Follow from "../follow/Follow";
-import API from "../../API";
+import API from "../../utils/API";
 
 export default function RightBar({user}) {
     const {user: currentUser} = useSelector(state => state);

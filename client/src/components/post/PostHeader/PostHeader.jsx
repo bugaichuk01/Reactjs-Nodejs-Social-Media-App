@@ -1,19 +1,24 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import axios from "axios";
 import {Link} from "react-router-dom";
 import {format} from "timeago.js";
 import {MoreVert} from "@material-ui/icons";
 import {Menu, MenuItem} from "@material-ui/core";
-import {useGetRequest} from "../../../useApi";
 import style from "./PostHeader.module.css";
+import API from "../../../utils/API";
 
 function PostHeader({post}) {
     const {user: currentUser} = useSelector(state => state);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+    const [user, setUser] = useState({});
 
-    const user = useGetRequest(`api/users?userId=${post.userId}`, post.userId)
+    useEffect(() => {
+        API.getUserById(post.userId)
+            .then(response => setUser(response.data))
+            .catch(error => console.log(error));
+    }, [post.userId]);
 
     const optionsHandler = (event) => {
         setAnchorEl(event.currentTarget);

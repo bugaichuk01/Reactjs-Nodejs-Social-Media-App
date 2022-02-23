@@ -1,15 +1,22 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import style from './ProfileSection.module.css';
 import cn from "classnames";
 import {useSelector} from "react-redux";
-import {useGetRequest} from "../../../useApi";
+import API from "../../../utils/API";
 
 function ProfileSection() {
     const navigate = useNavigate();
 
     const {user: currentUser} = useSelector(state => state);
-    const user = useGetRequest(`api/users?userId=${currentUser._id}`, currentUser._id)
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        API.getUser(currentUser.username)
+            .then(response => setUser(response.data))
+            .catch(error => console.log(error));
+    }, [currentUser.username]);
+
 
     return (
         <div className={style.sidebar__profile}>
