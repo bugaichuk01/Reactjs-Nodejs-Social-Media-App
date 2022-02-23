@@ -1,11 +1,11 @@
-.right-bar__container {
-    flex: 0.3;
+.rightbar__container {
+    flex: 0.5;
     height: calc(100vh - 50px);
     position: sticky;
     top: 50px;
 }
 
-.right-bar {
+.rightbar {
     flex: 3.5;
 }
 
@@ -16,42 +16,10 @@
     margin-top: 19px;
 }
 
-.birthday__container {
-    display: flex;
-    align-items: center;
-}
-
-.birthday__img {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-}
-
-.birthday__text {
-    font-weight: 300;
-    font-size: 15px;
-}
-
-.rightbar__ad {
-    width: 100%;
-    border-radius: 10px;
-    margin: 30px 0;
-}
-
 .rightbar__title {
     color: #fff;
-    margin-bottom: 20px;
-}
-
-.rightbar__friend-list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.rightbar__title {
+    font-weight: 600;
     font-size: 18px;
-    font-weight: 500;
     margin-bottom: 10px;
 }
 
@@ -59,17 +27,17 @@
     margin-bottom: 30px;
 }
 
-.rightbar__info-item {
+.rightbar__info_item {
     margin-bottom: 10px;
 }
 
-.rightbar__info-key {
+.rightbar__info_key {
     font-weight: 500;
     margin-right: 15px;
     color: #5b6875;
 }
 
-.rightbar__info-value {
+.rightbar__info_value {
     font-weight: 500;
     color: #ffffff;
 }
@@ -88,20 +56,20 @@
     color: #fff;
 }
 
-.rightbar__following-img {
+.rightbar__following_img {
     width: 100px;
     height: 100px;
     object-fit: cover;
     border-radius: 5px;
 }
 
-.rightbar__following-name {
+.rightbar__following_name {
     margin-top: 8px;
     font-size: 12px;
     font-weight: 500;
 }
 
-.rightbar__button-follow {
+.rightbar__button_follow {
     border: none;
     width: 90px;
     height: 35px;

@@ -4,8 +4,6 @@ import {AutorenewRounded, LoyaltyRounded, PublishRounded} from "@material-ui/ico
 import cn from "classnames";
 
 function PostBody({post, like}) {
-    const _path = process.env.REACT_APP_PUBLIC_FOLDER;
-
     const [description, setDescription] = useState('');
     const [isFullDesc, setIsFullDesc] = useState(false);
 
@@ -29,7 +27,7 @@ function PostBody({post, like}) {
                 {isFullDesc ? 'Hide' : 'Read more...'}
             </span>
             )}
-            <img className={style.post__img} src={_path + post.img} alt=""/>
+            <img className={style.post__img} src={process.env.REACT_APP_PUBLIC_FOLDER + post.img} alt=""/>
             <div className={style.post__under}>
                 <div className={style.icons}>
                     <LoyaltyRounded className={cn(style.icon, style.heart__icon)}/>

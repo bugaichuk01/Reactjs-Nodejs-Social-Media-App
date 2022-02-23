@@ -6,7 +6,6 @@ import {useSelector} from "react-redux";
 import {useGetRequest} from "../../../useApi";
 
 function ProfileSection() {
-    const _path = process.env.REACT_APP_PUBLIC_FOLDER;
     const navigate = useNavigate();
 
     const {user: currentUser} = useSelector(state => state);
@@ -16,10 +15,10 @@ function ProfileSection() {
         <div className={style.sidebar__profile}>
             <div className={style.sidebar__info}>
                 <img className={style.sidebar__cover}
-                     src={user.coverPicture ? _path + user.coverPicture : _path + 'person/defaultCover.png'}
+                     src={user.coverPicture ? process.env.REACT_APP_PUBLIC_FOLDER + user.coverPicture : process.env.REACT_APP_PUBLIC_FOLDER + 'static/defaultCover.png'}
                      alt=""/>
                 <img onClick={() => navigate(`/${user.username}`)} className={cn(style.sidebar__avatar)}
-                     src={user.profilePicture ? _path + user.profilePicture : _path + 'person/defaultAvatar.png'}
+                     src={user.profilePicture ? process.env.REACT_APP_PUBLIC_FOLDER + user.profilePicture : process.env.REACT_APP_PUBLIC_FOLDER + 'static/defaultAvatar.png'}
                      alt=""/>
             </div>
 

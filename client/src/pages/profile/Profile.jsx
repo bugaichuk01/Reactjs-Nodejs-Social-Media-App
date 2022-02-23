@@ -1,29 +1,34 @@
+import React from 'react'
 import styles from "./Profile.module.css";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Feed from "../../components/feed/Feed";
 import RightBar from "../../components/rightbar/RightBar";
 import {useParams} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {useGetRequest} from "../../useApi";
 import ProfileDesign from "./ProfileDesign/ProfileDesign";
+import {useEffect, useState} from "react";
+import API from "../../API";
 
 const Profile = () => {
-    const {user: currentUser} = useSelector(state => state);
+    const [user, setUser] = useState({});
     const params = useParams().username;
 
-    const user = useGetRequest(`api/users?username=${params}`, params)
+    useEffect(() => {
+        API.getUser(params)
+            .then(response => setUser(response.data))
+            .catch(error => console.log(error));
+    }, [params]);
 
     return (
-        <>
+        <React.Fragment>
             <Header/>
-            <ProfileDesign user={user} />
+            <ProfileDesign user={user}/>
             <div className={styles.profile}>
                 <Sidebar/>
-                <Feed username={params} currentUser={currentUser}/>
+                <Feed username={params}/>
                 <RightBar user={user}/>
             </div>
-        </>
+        </React.Fragment>
     );
 }
 

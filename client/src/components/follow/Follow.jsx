@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {follow, unfollow} from "../../store/actions";
-import axios from "axios";
 import './Follow.css';
+import API from '../../API'
 
 function Follow({user}) {
 
@@ -14,29 +13,23 @@ function Follow({user}) {
         setFollowed(currentUser.followings.includes(user?._id))
     }, [user, currentUser.followings]);
 
-    const handleClick = async () => {
-        try {
-            if (followed) {
-                await axios.put(`api/users/${user._id}/unfollow`, {
-                    userId: currentUser._id,
-                });
-                dispatch(unfollow(user._id));
-            } else {
-                await axios.put(`api/users/${user._id}/follow`, {
-                    userId: currentUser._id,
-                });
-                dispatch(follow(user._id));
-            }
-            setFollowed(!followed);
-        } catch (err) {
+    const handleClick = () => {
+        if (followed) {
+            API.unfollowUser(user._id, {userId: currentUser._id}, dispatch)
+                .catch(error => console.log(error));
+        } else {
+            API.followUser(user._id, {userId: currentUser._id}, dispatch)
+                .catch(error => console.log(error));
         }
-    };
+        setFollowed(!followed);
+    }
 
-    return (
-        <button className="follow__button" onClick={handleClick}>
-            {followed ? 'Unfollow' : 'Follow'}
-        </button>
-    );
+
+return (
+    <button className="follow__button" onClick={handleClick}>
+        {followed ? 'Unfollow' : 'Follow'}
+    </button>
+);
 }
 
 export default Follow;

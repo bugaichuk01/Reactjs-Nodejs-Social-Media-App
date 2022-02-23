@@ -11,6 +11,14 @@
     display: flex;
 }
 
+.share__top {
+
+}
+
+.share__right {
+    width: 100%;
+}
+
 .share__avatar {
     width: 45px;
     height: 45px;
@@ -43,17 +51,13 @@
     outline: none;
 }
 
-.share__bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
 .share__options {
+    width: 100%;
     margin-top: 15px;
     padding-top: 5px;
     padding-bottom: 5px;
     display: flex;
+    justify-content: space-between;
 }
 
 .share__option {

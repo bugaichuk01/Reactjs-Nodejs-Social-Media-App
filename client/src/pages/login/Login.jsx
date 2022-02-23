@@ -1,8 +1,8 @@
 import "./Login.css";
 import {useRef} from "react";
-import {loginCall} from "../../apiCalls";
 import {useDispatch, useSelector} from "react-redux";
 import {CircularProgress} from "@material-ui/core";
+import API from "../../API";
 
 const Login = () => {
     const user = useSelector(state => state);
@@ -12,7 +12,8 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        loginCall({email: email.current.value, password: password.current.value}, dispatch);
+        API.login({email: email.current.value, password: password.current.value}, dispatch)
+            .catch(error => console.log(error));
     }
 
     return (

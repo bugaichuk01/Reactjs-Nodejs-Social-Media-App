@@ -1,15 +1,22 @@
-.sidebar__followers {
+.followers {
     background-color: #1b2730;
     border-radius: 15px;
     margin-top: 15px;
-    padding: 10px 10px 10px 20px;
+    padding: 10px 10px 10px 10px;
 }
 
-.sidebar__text {
+.followers__wrapper {
+    padding-top: 5px;
+    padding-bottom: 10px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.followers__text {
     font-weight: 600;
     color: #fff;
 }
-.sidebar__friend_list {
+.followers__list {
     margin-top: 15px;
 }
 ul {
@@ -24,4 +31,15 @@ ul {
     padding-top: 20px;
     cursor: pointer;
     padding-bottom: 20px;
+}
+.empty {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.empty img {
+    margin-top: 10px;
+    width: 90%;
+    border-radius: 15px;
 }

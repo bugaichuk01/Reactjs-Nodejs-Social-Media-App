@@ -9,7 +9,6 @@ import {useGetRequest} from "../../../useApi";
 import style from "./PostHeader.module.css";
 
 function PostHeader({post}) {
-    const _path = process.env.REACT_APP_PUBLIC_FOLDER;
     const {user: currentUser} = useSelector(state => state);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -38,8 +37,8 @@ function PostHeader({post}) {
                         className={style.post__avatar}
                         src={
                             user.profilePicture
-                                ? _path + user.profilePicture
-                                : _path + 'person/defaultAvatar.png'
+                                ? process.env.REACT_APP_PUBLIC_FOLDER + user.profilePicture
+                                : process.env.REACT_APP_PUBLIC_FOLDER + 'static/defaultAvatar.png'
                         }
                         alt={user.username}
                     />

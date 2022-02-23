@@ -3,14 +3,19 @@ import {useSelector} from "react-redux";
 import {Search, Twitter, HomeRounded} from "@material-ui/icons";
 import style from "./Header.module.css";
 import cn from "classnames";
-import {useGetRequest} from "../../useApi";
+import {useEffect, useState} from "react";
+import API from "../../API";
 
 const Header = () => {
-    const _path = process.env.REACT_APP_PUBLIC_FOLDER
     const location = useLocation();
     const {user: currentUser} = useSelector(state => state);
-    const user = useGetRequest(`api/users?userId=${currentUser._id}`, currentUser._id)
+    const [user, setUser] = useState({});
 
+    useEffect(() => {
+        API.getUser(currentUser.username)
+            .then(response => setUser(response.data))
+            .catch(error => console.log(error));
+    }, []);
 
     return (
         <header className={style.header}>
@@ -52,8 +57,8 @@ const Header = () => {
                         <img
                             src={
                                 user.profilePicture
-                                    ? _path + user.profilePicture
-                                    : _path + 'person/defaultAvatar.png'
+                                    ? process.env.REACT_APP_PUBLIC_FOLDER + user.profilePicture
+                                    : process.env.REACT_APP_PUBLIC_FOLDER + 'static/defaultAvatar.png'
                             }
                             alt={user.username}
                             className={style.header__avatar}
