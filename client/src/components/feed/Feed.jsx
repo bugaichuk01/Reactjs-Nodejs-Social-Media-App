@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import Post from "../post/Post";
 import Share from "../Share/Share";
 import style from "./Feed.module.css";
-import {getAllPosts, getUsersPosts} from "../../store/actions/posts";
+import API from "../../utils/API";
 
 const Feed = ({username}) => {
     const dispatch = useDispatch();
@@ -12,8 +12,8 @@ const Feed = ({username}) => {
 
     useEffect(() => {
         ((user.username === username) || !username)
-            ? getAllPosts(user._id, dispatch)
-            : getUsersPosts(username, dispatch);
+            ? API.getAllPosts(user._id, dispatch)
+            : API.getUsersPosts(username, dispatch);
     }, [username, user]);
 
     return (

@@ -15,32 +15,13 @@ export const onDelete = async (post, user, dispatch) => {
     }
 }*/
 
-//Get all posts
-export const allPosts = (posts) => ({
+export const getAllPosts = (posts) => ({
     type: GET_ALL_POSTS,
     payload: posts
 });
 
-//Get all users posts
-export const usersPosts = (posts) => ({
+export const getUsersPosts = (posts) => ({
     type: GET_USERS_POSTS,
     payload: posts
 });
 
-export const getAllPosts = async (posts, dispatch) => {
-    try {
-        const response = await axios.get('api/posts/timeline/' + posts);
-        dispatch(allPosts(response.data));
-    } catch (error) {
-        console.log(error)
-    }
-};
-
-export const getUsersPosts = async (posts, dispatch) => {
-    try {
-        const response = await axios.get('api/posts/profile/' + posts);
-        dispatch(usersPosts(response.data));
-    } catch (error) {
-        console.log(error)
-    }
-};
