@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import './Follow.css';
-import {followUser, unfollowUser} from "../../store/actions/user";
+import API from "../../utils/API";
 
 function Follow({user}) {
 
@@ -15,10 +15,10 @@ function Follow({user}) {
 
     const handleClick = () => {
         if (followed) {
-            unfollowUser(user._id, {userId: currentUser._id}, dispatch)
+            API.unfollow(user._id, {userId: currentUser._id}, dispatch)
                 .catch(error => console.log(error));
         } else {
-            followUser(user._id, {userId: currentUser._id}, dispatch)
+            API.follow(user._id, {userId: currentUser._id}, dispatch)
                 .catch(error => console.log(error));
         }
         setFollowed(!followed);

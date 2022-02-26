@@ -2,7 +2,7 @@ import "./Login.css";
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {CircularProgress} from "@material-ui/core";
-import {login} from "../../store/actions/user";
+import API from "../../utils/API";
 
 const Login = () => {
     const {isFetching} = useSelector(state => state.userReducer);
@@ -18,7 +18,7 @@ const Login = () => {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        login(email, password, dispatch);
+        API.login(email, password, dispatch);
     }
 
     return (
