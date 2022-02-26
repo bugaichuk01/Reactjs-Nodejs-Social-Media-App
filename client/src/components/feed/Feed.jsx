@@ -11,7 +11,7 @@ const Feed = ({username}) => {
     const {posts} = useSelector(state => state.postsReducer);
 
     useEffect(() => {
-        ((user.username === username) || !username)
+        !username
             ? API.getAllPosts(user._id, dispatch)
             : API.getUsersPosts(username, dispatch);
     }, [username, user]);

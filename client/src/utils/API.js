@@ -1,6 +1,6 @@
 import axios from "axios";
 import {follow, loginFailure, loginStart, loginSuccess, unfollow} from "../store/actions/user";
-import {getAllPosts, getUsersPosts} from "../store/actions/posts";
+import {deletePost, getAllPosts, getUsersPosts} from "../store/actions/posts";
 
 export default {
     //user
@@ -39,11 +39,13 @@ export default {
         }
     },
 
-
     getAllPosts: async (posts, dispatch) => {
         try {
             const response = await axios.get('api/posts/timeline/' + posts);
-            dispatch(getAllPosts(response.data));
+            dispatch(getAllPosts(response.data.sort((p1, p2) => {
+                    return new Date(p2.createdAt) - new Date(p1.createdAt);
+                })
+            ));
         } catch (error) {
             console.log(error)
         }
@@ -52,7 +54,19 @@ export default {
     getUsersPosts: async (posts, dispatch) => {
         try {
             const response = await axios.get('api/posts/profile/' + posts);
-            dispatch(getUsersPosts(response.data));
+            dispatch(getUsersPosts(response.data.sort((p1, p2) => {
+                    return new Date(p2.createdAt) - new Date(p1.createdAt);
+                })
+            ));
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
+    deletePost: async (post, user, dispatch) => {
+        try {
+            await axios.delete(`api/posts/${post}`, {data: {userId: user}});
+            dispatch(deletePost(post))
         } catch (error) {
             console.log(error)
         }

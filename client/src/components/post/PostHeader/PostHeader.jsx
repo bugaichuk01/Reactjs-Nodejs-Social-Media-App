@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useSelector} from "react-redux";
-import axios from "axios";
+import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {format} from "timeago.js";
 import {MoreVert} from "@material-ui/icons";
@@ -9,6 +8,7 @@ import style from "./PostHeader.module.css";
 import API from "../../../utils/API";
 
 function PostHeader({post}) {
+    const dispatch = useDispatch();
     const {user: currentUser} = useSelector(state => state.userReducer);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -24,13 +24,8 @@ function PostHeader({post}) {
         setAnchorEl(event.currentTarget);
     };
 
-    const deleteHandler = async () => {
-        try {
-            await axios.delete(`api/posts/${post._id}`, {data: {userId: currentUser._id}});
-            window.location.reload();
-        } catch (error) {
-            console.log(error)
-        }
+    const deleteHandler = () => {
+        API.deletePost(post._id, currentUser._id, dispatch);
         setAnchorEl(null);
     }
 
