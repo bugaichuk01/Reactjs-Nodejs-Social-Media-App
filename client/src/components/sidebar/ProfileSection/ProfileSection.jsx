@@ -8,7 +8,7 @@ import API from "../../../utils/API";
 function ProfileSection() {
     const navigate = useNavigate();
 
-    const {user: currentUser} = useSelector(state => state);
+    const {user: currentUser} = useSelector(state => state.userReducer);
     const [user, setUser] = useState({});
 
     useEffect(() => {

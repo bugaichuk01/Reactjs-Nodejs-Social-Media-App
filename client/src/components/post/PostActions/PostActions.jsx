@@ -12,7 +12,7 @@ import style from "./PostActions.module.css";
 import UiButton from "../../UI/UIButton/UIButton";
 
 export default function PostActions({post, like, setLike}) {
-    const {user: currentUser} = useSelector(state => state);
+    const {user: currentUser} = useSelector(state => state.userReducer);
 
     const [isLiked, setIsLiked] = useState(false);
 

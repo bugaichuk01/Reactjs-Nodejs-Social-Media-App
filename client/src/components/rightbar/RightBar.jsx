@@ -6,7 +6,7 @@ import Follow from "../follow/Follow";
 import API from "../../utils/API";
 
 export default function RightBar({user}) {
-    const {user: currentUser} = useSelector(state => state);
+    const {user: currentUser} = useSelector(state => state.userReducer);
     const [followings, setFollowings] = useState([]);
 
     useEffect(() => {

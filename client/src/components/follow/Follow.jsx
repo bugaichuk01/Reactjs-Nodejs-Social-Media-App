@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import './Follow.css';
-import API from '../../utils/API'
+import {followUser, unfollowUser} from "../../store/actions/user";
 
 function Follow({user}) {
 
     const dispatch = useDispatch();
     const [followed, setFollowed] = useState(false);
-    const {user: currentUser} = useSelector(state => state);
+    const {user: currentUser} = useSelector(state => state.userReducer);
 
     useEffect(() => {
         setFollowed(currentUser.followings.includes(user?._id))
@@ -15,10 +15,10 @@ function Follow({user}) {
 
     const handleClick = () => {
         if (followed) {
-            API.unfollowUser(user._id, {userId: currentUser._id}, dispatch)
+            unfollowUser(user._id, {userId: currentUser._id}, dispatch)
                 .catch(error => console.log(error));
         } else {
-            API.followUser(user._id, {userId: currentUser._id}, dispatch)
+            followUser(user._id, {userId: currentUser._id}, dispatch)
                 .catch(error => console.log(error));
         }
         setFollowed(!followed);

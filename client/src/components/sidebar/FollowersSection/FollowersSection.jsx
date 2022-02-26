@@ -11,7 +11,7 @@ function FollowersSection() {
     const [isFullFollowers, setIsFullFollowers] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
-    const {user: currentUser} = useSelector(state => state);
+    const {user: currentUser} = useSelector(state => state.userReducer);
     const {_id} = currentUser;
 
 

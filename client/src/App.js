@@ -13,10 +13,10 @@ import {useEffect} from "react";
 
 const App = () => {
 
-    const {user: currentUser} = useSelector(state => state);
+    const {user: currentUser} = useSelector(state => state.userReducer);
 
     useEffect(() => {
-        localStorage.setItem('user.user', JSON.stringify(currentUser));
+        localStorage.setItem('user', JSON.stringify(currentUser));
     }, [currentUser]);
 
     return (

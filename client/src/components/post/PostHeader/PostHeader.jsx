@@ -9,7 +9,7 @@ import style from "./PostHeader.module.css";
 import API from "../../../utils/API";
 
 function PostHeader({post}) {
-    const {user: currentUser} = useSelector(state => state);
+    const {user: currentUser} = useSelector(state => state.userReducer);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const [user, setUser] = useState({});

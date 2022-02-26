@@ -7,7 +7,7 @@ import API from "../../utils/API";
 
 const Feed = ({username}) => {
     const [posts, setPosts] = useState([]);
-    const {user: currentUser} = useSelector(state => state);
+    const {user: currentUser} = useSelector(state => state.userReducer);
 
     useEffect(() => {
         API.getPosts(username, currentUser._id)

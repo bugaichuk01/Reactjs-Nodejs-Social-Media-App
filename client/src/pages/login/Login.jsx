@@ -1,19 +1,24 @@
 import "./Login.css";
-import {useRef} from "react";
+import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {CircularProgress} from "@material-ui/core";
-import API from "../../utils/API";
+import {login} from "../../store/actions/user";
 
 const Login = () => {
-    const user = useSelector(state => state);
+    const {isFetching} = useSelector(state => state.userReducer);
     const dispatch = useDispatch();
-    const email = useRef();
-    const password = useRef();
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    });
+    const { email, password } = formData;
 
-    const handleSubmit = (event) => {
+    const onChange = (event) =>
+        setFormData({...formData, [event.target.name]: event.target.value})
+
+    const onSubmit = (event) => {
         event.preventDefault();
-        API.login({email: email.current.value, password: password.current.value}, dispatch)
-            .catch(error => console.log(error));
+        login(email, password, dispatch);
     }
 
     return (
@@ -26,26 +31,28 @@ const Login = () => {
           </span>
                 </div>
                 <div className="login__right">
-                    <form className='login__box' onSubmit={handleSubmit}>
+                    <form className='login__box' onSubmit={onSubmit}>
                         <input
                             placeholder="Email"
                             type='email'
+                            name='email'
                             className="login__input"
-                            ref={email}
+                            onChange={onChange}
                         />
                         <input
                             placeholder="Password"
                             type='password'
+                            name='password'
                             className="login__input"
-                            ref={password}
-                            minLength={6}
+                            minLength='6'
+                            onChange={onChange}
                         />
-                        <button disabled={user.isFetching} className="login__button">
-                            {user.isFetching ? <CircularProgress size='25px' color='white' /> : 'Log in'}
+                        <button disabled={isFetching} className="login__button">
+                            {isFetching ? <CircularProgress size='25px' color='white' /> : 'Log in'}
                         </button>
                         <span className="login__forgot">Forgot Password?</span>
-                        <button disabled={user.isFetching} className="login__register-button">
-                            {user.isFetching ? <CircularProgress size='25px' color='white' /> : 'zNot registered yet?'}
+                        <button disabled={isFetching} className="login__register-button">
+                            {isFetching ? <CircularProgress size='25px' color='white' /> : 'zNot registered yet?'}
                         </button>
                     </form>
                 </div>

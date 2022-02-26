@@ -9,7 +9,7 @@ import styles from "./Share.module.css";
 
 
 export default function Share() {
-    const {user: currentUser} = useSelector(state => state);
+    const {user: currentUser} = useSelector(state => state.userReducer);
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
