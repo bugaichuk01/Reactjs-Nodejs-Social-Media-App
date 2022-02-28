@@ -1,4 +1,4 @@
-import {DELETE_POST, GET_ALL_POSTS, GET_USERS_POSTS, UPDATE_LIKES} from "../constants/actionTypes";
+import {CREATE_POST, DELETE_POST, GET_ALL_POSTS, GET_USERS_POSTS, UPDATE_LIKES} from "../constants/actionTypes";
 
 export const getAllPosts = (posts) => ({
     type: GET_ALL_POSTS,
@@ -18,4 +18,9 @@ export const deletePost = (id) => ({
 export const updateLikes = (id) => ({
     type: UPDATE_LIKES,
     payload: id
-})
+});
+
+export const createPost = (post) => ({
+    type: CREATE_POST,
+    payload: post
+});

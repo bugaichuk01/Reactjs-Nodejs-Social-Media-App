@@ -1,4 +1,4 @@
-import {GET_ALL_POSTS, GET_USERS_POSTS, DELETE_POST, UPDATE_LIKES} from "../constants/actionTypes";
+import {GET_ALL_POSTS, GET_USERS_POSTS, DELETE_POST, UPDATE_LIKES, CREATE_POST} from "../constants/actionTypes";
 
 const initialState = {
     posts: [],
@@ -35,6 +35,12 @@ export const postsReducer = (state = initialState, action) => {
                 ),
                 loading: false,
             };
+        case CREATE_POST:
+            return {
+                ...state,
+                posts: [action.payload, ...state.posts],
+                loading: false
+            }
         default:
             return state;
     }

@@ -1,6 +1,6 @@
 import React from "react";
 import {useEffect, useRef, useState} from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import {Label, Room, EmojiEmotions, InsertPhoto, Cancel} from "@material-ui/icons"
 import API from "../../utils/API";
@@ -10,6 +10,7 @@ import styles from "./Share.module.css";
 
 export default function Share() {
     const {user: currentUser} = useSelector(state => state.userReducer);
+    const dispatch = useDispatch();
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
@@ -48,11 +49,7 @@ export default function Share() {
             } catch (err) {
             }
         }
-        try {
-            await axios.post("api/posts", newPost);
-            window.location.reload();
-        } catch (err) {
-        }
+        API.createPost(newPost, dispatch);
     };
 
     return (

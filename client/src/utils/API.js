@@ -1,6 +1,6 @@
 import axios from "axios";
 import {follow, loginFailure, loginStart, loginSuccess, unfollow} from "../store/actions/user";
-import {deletePost, getAllPosts, getUsersPosts, updateLikes} from "../store/actions/posts";
+import {createPost, deletePost, getAllPosts, getUsersPosts, updateLikes} from "../store/actions/posts";
 
 export default {
     //user
@@ -76,6 +76,15 @@ export default {
         try {
             await axios.put('api/posts/' + post + '/like', {userId: user});
             dispatch(updateLikes(user));
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
+    createPost: async (post, dispatch) => {
+        try {
+            const response = await axios.post("api/posts", post);
+            dispatch(createPost(response.data))
         } catch (error) {
             console.log(error)
         }
