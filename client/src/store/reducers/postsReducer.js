@@ -1,4 +1,4 @@
-import {GET_ALL_POSTS, GET_USERS_POSTS, DELETE_POST} from "../constants/actionTypes";
+import {GET_ALL_POSTS, GET_USERS_POSTS, DELETE_POST, UPDATE_LIKES} from "../constants/actionTypes";
 
 const initialState = {
     posts: [],
@@ -26,6 +26,14 @@ export const postsReducer = (state = initialState, action) => {
                 ...state,
                 posts: state.posts.filter((post) => post._id !== action.payload),
                 loading: false
+            };
+        case UPDATE_LIKES:
+            return {
+                ...state,
+                posts: state.posts.map((post) =>
+                    post.likes.includes(action.payload) ? post : { ...post, likes: action.payload }
+                ),
+                loading: false,
             };
         default:
             return state;

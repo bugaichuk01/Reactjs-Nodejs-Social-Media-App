@@ -1,6 +1,6 @@
 import axios from "axios";
 import {follow, loginFailure, loginStart, loginSuccess, unfollow} from "../store/actions/user";
-import {deletePost, getAllPosts, getUsersPosts} from "../store/actions/posts";
+import {deletePost, getAllPosts, getUsersPosts, updateLikes} from "../store/actions/posts";
 
 export default {
     //user
@@ -71,5 +71,14 @@ export default {
             console.log(error)
         }
     },
+
+    updateLikes: async (post, user, dispatch) => {
+        try {
+            await axios.put('api/posts/' + post + '/like', {userId: user});
+            dispatch(updateLikes(user));
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
 }

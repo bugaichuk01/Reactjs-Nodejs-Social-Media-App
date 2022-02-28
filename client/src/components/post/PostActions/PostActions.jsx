@@ -1,4 +1,4 @@
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {
@@ -10,9 +10,11 @@ import {
 import cn from 'classnames';
 import style from "./PostActions.module.css";
 import UiButton from "../../UI/UIButton/UIButton";
+import API from "../../../utils/API";
 
 export default function PostActions({post, like, setLike}) {
     const {user: currentUser} = useSelector(state => state.userReducer);
+    const dispatch = useDispatch();
 
     const [isLiked, setIsLiked] = useState(false);
 
@@ -22,11 +24,7 @@ export default function PostActions({post, like, setLike}) {
     }, [currentUser._id]);
 
     const likeHandler = () => {
-        try {
-            axios.put('api/posts/' + post._id + '/like', {userId: currentUser._id});
-        } catch (error) {
-            console.log(error)
-        }
+        API.updateLikes(post._id, currentUser._id, dispatch)
         setLike(isLiked ? like - 1 : like + 1);
         setIsLiked(!isLiked);
     }

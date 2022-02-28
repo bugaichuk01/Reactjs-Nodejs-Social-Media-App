@@ -8,3 +8,4 @@ export const UNFOLLOW = 'UNFOLLOW';
 export const DELETE_POST = 'DELETE_POST';
 export const GET_ALL_POSTS = 'GET_ALL_POSTS';
 export const GET_USERS_POSTS = 'GET_USERS_POSTS';
+export const UPDATE_LIKES = 'UPDATE_LIKES';
