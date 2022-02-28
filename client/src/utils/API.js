@@ -88,6 +88,14 @@ export default {
         } catch (error) {
             console.log(error)
         }
+    },
+
+    uploadFile: async (data) => {
+        try {
+            await axios.post("api/upload", data);
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 }

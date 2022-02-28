@@ -15,11 +15,9 @@ function Follow({user}) {
 
     const handleClick = () => {
         if (followed) {
-            API.unfollow(user._id, {userId: currentUser._id}, dispatch)
-                .catch(error => console.log(error));
+            API.unfollow(user._id, {userId: currentUser._id}, dispatch);
         } else {
-            API.follow(user._id, {userId: currentUser._id}, dispatch)
-                .catch(error => console.log(error));
+            API.follow(user._id, {userId: currentUser._id}, dispatch);
         }
         setFollowed(!followed);
     }

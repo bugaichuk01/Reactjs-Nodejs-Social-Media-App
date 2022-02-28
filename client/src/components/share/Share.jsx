@@ -1,7 +1,6 @@
 import React from "react";
 import {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import axios from "axios";
 import {Label, Room, EmojiEmotions, InsertPhoto, Cancel} from "@material-ui/icons"
 import API from "../../utils/API";
 import ShareLoader from "../../loaders/ShareLoader";
@@ -11,14 +10,7 @@ import styles from "./Share.module.css";
 export default function Share() {
     const {user: currentUser} = useSelector(state => state.userReducer);
     const dispatch = useDispatch();
-    const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        API.getUser(currentUser.username)
-            .then(response => setUser(response.data))
-            .catch(error => console.log(error));
-    }, [currentUser.username]);
 
     //Example to see how works skeleton-screen components
     useEffect(() => {
@@ -31,10 +23,10 @@ export default function Share() {
     const desc = useRef();
     const [file, setFile] = useState(null);
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         const newPost = {
-            userId: user._id,
+            userId: currentUser._id,
             desc: desc.current.value,
         };
         if (file) {
@@ -43,11 +35,7 @@ export default function Share() {
             data.append("name", fileName);
             data.append("file", file);
             newPost.img = fileName;
-            console.log(newPost);
-            try {
-                await axios.post("api/upload", data);
-            } catch (err) {
-            }
+            API.uploadFile(data);
         }
         API.createPost(newPost, dispatch);
     };
@@ -62,14 +50,14 @@ export default function Share() {
                             <div className={styles.share__left}>
                                 <img className={styles.share__avatar}
                                      src={
-                                         user.profilePicture
-                                             ? process.env.REACT_APP_PUBLIC_FOLDER + user.profilePicture
+                                         currentUser.profilePicture
+                                             ? process.env.REACT_APP_PUBLIC_FOLDER + currentUser.profilePicture
                                              : process.env.REACT_APP_PUBLIC_FOLDER + 'static/defaultAvatar.png'}
                                      alt=""/>
                             </div>
                             <div className={styles.share__right}>
                                 <input
-                                    placeholder={"What's in your mind " + user.username + "?"}
+                                    placeholder={"What's in your mind " + currentUser.username + "?"}
                                     className={styles.share__input}
                                     ref={desc}
                                 />
