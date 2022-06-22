@@ -25,9 +25,9 @@ const Login = () => {
         <div className="login">
             <div className="login__wrapper">
                 <div className="login__left">
-                    <h3 className="login__logo">Lamasocial</h3>
+                    <h3 className="login__logo">SocialMedia</h3>
                     <span className="login__desc">
-            Connect with friends and the world around you on Lamasocial.
+            Connect with friends and the world around you on SocialMedia.
           </span>
                 </div>
                 <div className="login__right">
@@ -52,7 +52,7 @@ const Login = () => {
                         </button>
                         <span className="login__forgot">Forgot Password?</span>
                         <button disabled={isFetching} className="login__register-button">
-                            {isFetching ? <CircularProgress size='25px' color='white' /> : 'zNot registered yet?'}
+                            {isFetching ? <CircularProgress size='25px' color='white' /> : 'Not registered yet?'}
                         </button>
                     </form>
                 </div>
